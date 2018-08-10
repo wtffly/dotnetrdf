@@ -95,7 +95,7 @@ namespace VDS.RDF
             }
             else
             {
-                String temp = u.AbsoluteUri;
+                String temp = u.ToString();
                 temp = temp.Substring(0, temp.Length - u.Fragment.Length);
                 return UriFactory.Create(temp);
             }
@@ -116,7 +116,7 @@ namespace VDS.RDF
                 if (uriref.Equals(String.Empty))
                 {
                     // Empty Uri reference refers to the Base Uri
-                    return UriFactory.Create(FixMalformedUriStrings(baseUri)).AbsoluteUri;
+                    return UriFactory.Create(FixMalformedUriStrings(baseUri)).ToString();
                 }
                 else
                 {
@@ -125,7 +125,7 @@ namespace VDS.RDF
                     if (u.IsAbsoluteUri) 
                     {
                         // Uri Reference is an Absolute Uri so no need to resolve against Base Uri
-                        return u.AbsoluteUri;
+                        return u.ToString();
                     } 
                     else 
                     {
@@ -136,11 +136,11 @@ namespace VDS.RDF
                         // We have to use ToString() here because this is a Relative URI so AbsoluteUri would be invalid here
                         if (u.ToString().StartsWith("#"))
                         {
-                            return ResolveUri(u, b).AbsoluteUri;
+                            return ResolveUri(u, b).ToString();
                         }
                         else if (IsValidBaseUri(b))
                         {
-                            return ResolveUri(u, b).AbsoluteUri;
+                            return ResolveUri(u, b).ToString();
                         }
                         else
                         {
@@ -158,7 +158,7 @@ namespace VDS.RDF
 
                 try
                 {
-                    return new Uri(FixMalformedUriStrings(uriref), UriKind.Absolute).AbsoluteUri;
+                    return new Uri(FixMalformedUriStrings(uriref), UriKind.Absolute).ToString();
                 }
                 catch (UriFormatException)
                 {
@@ -210,7 +210,7 @@ namespace VDS.RDF
                 if (nsmap.HasNamespace(String.Empty))
                 {
                     // Default Namespace Defined
-                    output = nsmap.GetNamespaceUri(String.Empty).AbsoluteUri + qname.Substring(1);
+                    output = nsmap.GetNamespaceUri(String.Empty).ToString() + qname.Substring(1);
                 }
                 else if (allowDefaultPrefixFallback)
                 {
@@ -219,7 +219,7 @@ namespace VDS.RDF
                     // i.e. these always result in Hash URIs
                     if (baseUri != null)
                     {
-                        output = baseUri.AbsoluteUri;
+                        output = baseUri.ToString();
                         if (output.EndsWith("#"))
                         {
                             output += qname.Substring(1);
@@ -245,11 +245,11 @@ namespace VDS.RDF
                 String[] parts = qname.Split(new char[] { ':' }, 2);
                 if (parts.Length == 1)
                 {
-                    output = nsmap.GetNamespaceUri(String.Empty).AbsoluteUri + parts[0];
+                    output = nsmap.GetNamespaceUri(String.Empty).ToString() + parts[0];
                 }
                 else
                 {
-                    output = nsmap.GetNamespaceUri(parts[0]).AbsoluteUri + parts[1];
+                    output = nsmap.GetNamespaceUri(parts[0]).ToString() + parts[1];
                 }
             }
 
@@ -271,7 +271,7 @@ namespace VDS.RDF
             }
             else if (t.TokenType == Token.URI)
             {
-                String uriBase = (baseUri == null) ? String.Empty : baseUri.AbsoluteUri;
+                String uriBase = (baseUri == null) ? String.Empty : baseUri.ToString();
                 return ResolveUri(t.Value, uriBase);
             }
             else
@@ -474,7 +474,7 @@ namespace VDS.RDF
 
             // Output the Request Headers
             Console.Error.WriteLine("# HTTP DEBUGGING #");
-            Console.Error.WriteLine("HTTP Request to " + httpRequest.RequestUri.AbsoluteUri);
+            Console.Error.WriteLine("HTTP Request to " + httpRequest.RequestUri.ToString());
             Console.Error.WriteLine();
             Console.Error.WriteLine(httpRequest.Method);
             foreach (String header in httpRequest.Headers.AllKeys)
@@ -496,7 +496,7 @@ namespace VDS.RDF
 
             // Output the Response Uri and Headers
             Console.Error.WriteLine();
-            Console.Error.WriteLine("HTTP Response from " + httpResponse.ResponseUri.AbsoluteUri);
+            Console.Error.WriteLine("HTTP Response from " + httpResponse.ResponseUri.ToString());
 #if NETCORE
             Console.Error.WriteLine("HTTP " + (int)httpResponse.StatusCode + " " + httpResponse.StatusDescription);
 #else

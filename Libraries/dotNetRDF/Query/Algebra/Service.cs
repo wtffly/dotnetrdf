@@ -75,7 +75,7 @@ namespace VDS.RDF.Query.Algebra
             {
                 SparqlRemoteEndpoint endpoint;
                 Uri endpointUri;
-                String baseUri = (context.Query.BaseUri == null) ? String.Empty : context.Query.BaseUri.AbsoluteUri;
+                String baseUri = (context.Query.BaseUri == null) ? String.Empty : context.Query.BaseUri.ToString();
                 SparqlParameterizedString sparqlQuery = new SparqlParameterizedString("SELECT * WHERE ");
 
                 String pattern = _pattern.ToString();

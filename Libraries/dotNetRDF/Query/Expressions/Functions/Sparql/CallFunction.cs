@@ -66,7 +66,7 @@ namespace VDS.RDF.Query.Expressions.Functions.Sparql
             {
                 Uri funcUri = ((IUriNode)funcIdent).Uri;
                 ISparqlExpression func;
-                if (_functionCache.TryGetValue(funcUri.AbsoluteUri, out func))
+                if (_functionCache.TryGetValue(funcUri.ToString(), out func))
                 {
                     if (func == null) throw new RdfQueryException("Function identifier does not identify a known function");
                 }
@@ -76,12 +76,12 @@ namespace VDS.RDF.Query.Expressions.Functions.Sparql
                     {
                         // Try to create the function and cache it - remember to respect the queries Expression Factories if present
                         func = SparqlExpressionFactory.CreateExpression(funcUri, _args.Skip(1).ToList(), (context.Query != null ? context.Query.ExpressionFactories : Enumerable.Empty<ISparqlCustomExpressionFactory>()));
-                        _functionCache.Add(funcUri.AbsoluteUri, func);
+                        _functionCache.Add(funcUri.ToString(), func);
                     }
                     catch
                     {
                         // If something goes wrong creating the function cache a null so we ignore this function URI for later calls
-                        _functionCache.Add(funcUri.AbsoluteUri, null);
+                        _functionCache.Add(funcUri.ToString(), null);
                     }
                 }
                 // Now invoke the function

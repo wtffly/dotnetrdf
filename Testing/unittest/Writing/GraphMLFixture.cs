@@ -72,7 +72,7 @@ namespace VDS.RDF.Writing
             }
             else
             {
-                return graphElements.Single(element => element.Attribute(GraphMLSpecsHelper.Id)?.Value == baseUri.AbsoluteUri);
+                return graphElements.Single(element => element.Attribute(GraphMLSpecsHelper.Id)?.Value == baseUri.ToString());
             }
         }
 

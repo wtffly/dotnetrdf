@@ -187,7 +187,7 @@ namespace VDS.RDF.Writing
                                             writer.WriteEncodedText(lit.Value);
                                             writer.RenderEndTag();
                                             writer.WriteEncodedText("^^");
-                                            writer.AddAttribute(HtmlTextWriterAttribute.Href, _formatter.FormatUri(lit.DataType.AbsoluteUri));
+                                            writer.AddAttribute(HtmlTextWriterAttribute.Href, _formatter.FormatUri(lit.DataType.ToString()));
                                             writer.AddAttribute(HtmlTextWriterAttribute.Class, CssClassDatatype);
                                             writer.RenderBeginTag(HtmlTextWriterTag.A);
                                             writer.WriteEncodedText(lit.DataType.ToString());

@@ -61,7 +61,7 @@ namespace VDS.RDF.Nodes
                     // Decide what kind of valued node to produce based on node datatype
                     if (lit.DataType != null)
                     {
-                        String dt = lit.DataType.AbsoluteUri;
+                        String dt = lit.DataType.ToString();
                         switch (dt)
                         {
                             case XmlSpecsHelper.XmlSchemaDataTypeBoolean:

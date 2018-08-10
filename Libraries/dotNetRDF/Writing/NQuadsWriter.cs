@@ -212,7 +212,7 @@ namespace VDS.RDF.Writing
             if (context.Graph.IsEmpty) return string.Empty;
             if (context.PrettyPrint && context.Graph.BaseUri != null)
             {
-                context.Output.WriteLine("# Graph: " + context.Graph.BaseUri.AbsoluteUri);
+                context.Output.WriteLine("# Graph: " + context.Graph.BaseUri.ToString());
             }
             foreach (var t in context.Graph.Triples)
             {

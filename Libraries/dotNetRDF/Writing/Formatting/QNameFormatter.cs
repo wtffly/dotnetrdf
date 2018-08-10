@@ -94,11 +94,11 @@ namespace VDS.RDF.Writing.Formatting
             StringBuilder output = new StringBuilder();
             String qname;
 
-            if (_allowAKeyword && segment == TripleSegment.Predicate && u.Uri.AbsoluteUri.Equals(RdfSpecsHelper.RdfType))
+            if (_allowAKeyword && segment == TripleSegment.Predicate && u.Uri.ToString().Equals(RdfSpecsHelper.RdfType))
             {
                 output.Append('a');
             }
-            else if (_qnameMapper.ReduceToQName(u.Uri.AbsoluteUri, out qname))
+            else if (_qnameMapper.ReduceToQName(u.Uri.ToString(), out qname))
             {
                 if (IsValidQName(qname))
                 {

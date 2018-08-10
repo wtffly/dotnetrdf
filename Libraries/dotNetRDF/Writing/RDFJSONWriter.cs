@@ -249,7 +249,7 @@ namespace VDS.RDF.Writing
                         else if (lit.DataType != null)
                         {
                             writer.WritePropertyName("datatype");
-                            writer.WriteValue(lit.DataType.AbsoluteUri);
+                            writer.WriteValue(lit.DataType.ToString());
                         }
                         writer.WritePropertyName("type");
                         writer.WriteValue("literal");

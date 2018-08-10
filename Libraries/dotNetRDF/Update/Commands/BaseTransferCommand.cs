@@ -130,7 +130,7 @@ namespace VDS.RDF.Update.Commands
             }
             else
             {
-                return graphUri.AbsoluteUri.Equals(_sourceUri.ToSafeString()) || graphUri.AbsoluteUri.Equals(_destUri.ToSafeString());
+                return graphUri.ToString().Equals(_sourceUri.ToSafeString()) || graphUri.ToString().Equals(_destUri.ToSafeString());
             }
         }
 
@@ -164,7 +164,7 @@ namespace VDS.RDF.Update.Commands
             }
             else
             {
-                output.Append(" GRAPH <" + _sourceUri.AbsoluteUri.Replace(">", "\\>") + ">");
+                output.Append(" GRAPH <" + _sourceUri.ToString().Replace(">", "\\>") + ">");
             }
             output.Append(" TO ");
             if (_destUri == null)
@@ -173,7 +173,7 @@ namespace VDS.RDF.Update.Commands
             }
             else
             {
-                output.Append(" GRAPH <" + _destUri.AbsoluteUri.Replace(">", "\\>") + ">");
+                output.Append(" GRAPH <" + _destUri.ToString().Replace(">", "\\>") + ">");
             }
 
             return output.ToString();

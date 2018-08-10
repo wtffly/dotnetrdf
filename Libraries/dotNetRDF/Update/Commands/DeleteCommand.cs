@@ -99,7 +99,7 @@ namespace VDS.RDF.Update.Commands
                 List<String> affectedUris = new List<string>();
                 if (TargetUri != null)
                 {
-                    affectedUris.Add(TargetUri.AbsoluteUri);
+                    affectedUris.Add(TargetUri.ToString());
                 }
                 if (_deletePattern.IsGraph) affectedUris.Add(_deletePattern.GraphSpecifier.Value);
                 if (_deletePattern.HasChildGraphPatterns)
@@ -123,7 +123,7 @@ namespace VDS.RDF.Update.Commands
             List<String> affectedUris = new List<string>();
             if (TargetUri != null)
             {
-                affectedUris.Add(TargetUri.AbsoluteUri);
+                affectedUris.Add(TargetUri.ToString());
             }
             else
             {
@@ -387,7 +387,7 @@ namespace VDS.RDF.Update.Commands
             if (_graphUri != null)
             {
                 output.Append("WITH <");
-                output.Append(_graphUri.AbsoluteUri.Replace(">", "\\>"));
+                output.Append(_graphUri.ToString().Replace(">", "\\>"));
                 output.AppendLine(">");
             }
             output.AppendLine("DELETE");
@@ -396,14 +396,14 @@ namespace VDS.RDF.Update.Commands
             {
                 foreach (Uri u in _usingUris)
                 {
-                    output.AppendLine("USING <" + u.AbsoluteUri.Replace(">", "\\>") + ">");
+                    output.AppendLine("USING <" + u.ToString().Replace(">", "\\>") + ">");
                 }
             }
             if (_usingNamedUris != null)
             {
                 foreach (Uri u in _usingNamedUris)
                 {
-                    output.AppendLine("USING NAMED <" + u.AbsoluteUri.Replace(">", "\\>") + ">");
+                    output.AppendLine("USING NAMED <" + u.ToString().Replace(">", "\\>") + ">");
                 }
             }
             output.AppendLine("WHERE");

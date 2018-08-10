@@ -76,7 +76,7 @@ namespace VDS.RDF.Query.Expressions.Functions.XPath.Cast
                     ILiteralNode lit = (ILiteralNode)n;
                     if (lit.DataType != null)
                     {
-                        if (lit.DataType.AbsoluteUri.Equals(XmlSpecsHelper.XmlSchemaDataTypeFloat))
+                        if (lit.DataType.ToString().Equals(XmlSpecsHelper.XmlSchemaDataTypeFloat))
                         {
                             float f;
                             if (Single.TryParse(lit.Value, NumberStyles.Any, CultureInfo.InvariantCulture, out f))
@@ -89,7 +89,7 @@ namespace VDS.RDF.Query.Expressions.Functions.XPath.Cast
                                 throw new RdfQueryException("Invalid lexical form for a xsd:float");
                             }
                         }
-                        else if (lit.DataType.AbsoluteUri.Equals(XmlSpecsHelper.XmlSchemaDataTypeDateTime))
+                        else if (lit.DataType.ToString().Equals(XmlSpecsHelper.XmlSchemaDataTypeDateTime))
                         {
                             // DateTime cast forbidden
                             throw new RdfQueryException("Cannot cast a xsd:dateTime to a xsd:float");

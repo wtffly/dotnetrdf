@@ -139,7 +139,7 @@ namespace VDS.RDF.Nodes
         {
             get
             {
-                return DataType.AbsoluteUri;
+                return DataType.ToString();
             }
         }
 

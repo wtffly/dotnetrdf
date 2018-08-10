@@ -106,7 +106,7 @@ namespace VDS.RDF.JsonLd
                 var result = store.Graphs.Single().Triples.Single().Object.As<ILiteralNode>();
 
                 Assert.Equal(dateTimeValue, result.Value);
-                Assert.Equal(datatype, result.DataType.AbsoluteUri);
+                Assert.Equal(datatype, result.DataType.ToString());
             }
         }
 

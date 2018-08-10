@@ -152,7 +152,7 @@ namespace VDS.RDF.Nodes
         {
             get
             {
-                return (DataType != null ? DataType.AbsoluteUri : String.Empty);
+                return (DataType != null ? DataType.ToString() : String.Empty);
             }
         }
 

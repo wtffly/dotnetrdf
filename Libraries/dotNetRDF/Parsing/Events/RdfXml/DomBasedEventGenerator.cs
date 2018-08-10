@@ -110,7 +110,7 @@ namespace VDS.RDF.Parsing.Events.RdfXml
             {
                 if (context.BaseUri != null)
                 {
-                    root.BaseUri = context.BaseUri.AbsoluteUri;
+                    root.BaseUri = context.BaseUri.ToString();
                 }
             }
             ElementEvent element = new ElementEvent(docEl.LocalName, docEl.Prefix, root.BaseUri, docEl.OuterXml);

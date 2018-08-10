@@ -143,7 +143,7 @@ namespace VDS.RDF
             }
             else
             {
-                throw new RdfException("The Prefix for the given URI '" + uri.AbsoluteUri + "' is not known by the in-scope NamespaceMapper");
+                throw new RdfException("The Prefix for the given URI '" + uri.ToString() + "' is not known by the in-scope NamespaceMapper");
             }
         }
 
@@ -193,7 +193,7 @@ namespace VDS.RDF
                 {
                     // Colliding Namespaces get remapped to new prefixes
                     // Assuming the prefixes aren't already used for the same Uri
-                    if (!GetNamespaceUri(prefix).AbsoluteUri.Equals(nsmap.GetNamespaceUri(prefix).AbsoluteUri, StringComparison.Ordinal))
+                    if (!GetNamespaceUri(prefix).ToString().Equals(nsmap.GetNamespaceUri(prefix).ToString(), StringComparison.Ordinal))
                     {
                         while (_uris.ContainsKey(tempPrefix))
                         {
@@ -333,7 +333,7 @@ namespace VDS.RDF
         {
             foreach (Uri u in _uris.Values.Select(l => l.Last().Uri))
             {
-                String baseuri = u.AbsoluteUri;
+                String baseuri = u.ToString();
 
                 // Does the Uri start with the Base Uri
                 if (uri.StartsWith(baseuri))

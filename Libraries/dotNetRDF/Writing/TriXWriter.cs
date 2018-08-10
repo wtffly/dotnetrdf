@@ -137,16 +137,16 @@ namespace VDS.RDF.Writing
             // Is the Graph Named?
             if (g.BaseUri != null)
             {
-                if (!g.BaseUri.AbsoluteUri.StartsWith("trix:local:"))
+                if (!g.BaseUri.ToString().StartsWith("trix:local:"))
                 {
                     writer.WriteStartElement("uri");
-                    writer.WriteRaw(WriterHelper.EncodeForXml(g.BaseUri.AbsoluteUri));
+                    writer.WriteRaw(WriterHelper.EncodeForXml(g.BaseUri.ToString()));
                     writer.WriteEndElement();
                 }
                 else
                 {
                     writer.WriteStartElement("id");
-                    writer.WriteRaw(WriterHelper.EncodeForXml(g.BaseUri.AbsoluteUri.Substring(11)));
+                    writer.WriteRaw(WriterHelper.EncodeForXml(g.BaseUri.ToString().Substring(11)));
                     writer.WriteEndElement();
                 }
             }
@@ -185,9 +185,9 @@ namespace VDS.RDF.Writing
                     {
                         writer.WriteStartElement("typedLiteral");
                         writer.WriteStartAttribute("datatype");
-                        writer.WriteRaw(WriterHelper.EncodeForXml(lit.DataType.AbsoluteUri));
+                        writer.WriteRaw(WriterHelper.EncodeForXml(lit.DataType.ToString()));
                         writer.WriteEndAttribute();
-                        if (lit.DataType.AbsoluteUri.Equals(RdfSpecsHelper.RdfXmlLiteral))
+                        if (lit.DataType.ToString().Equals(RdfSpecsHelper.RdfXmlLiteral))
                         {
                             writer.WriteCData(lit.Value);
                         }
@@ -210,7 +210,7 @@ namespace VDS.RDF.Writing
                     break;
                 case NodeType.Uri:
                     writer.WriteStartElement("uri");
-                    writer.WriteRaw(WriterHelper.EncodeForXml(((IUriNode)n).Uri.AbsoluteUri));
+                    writer.WriteRaw(WriterHelper.EncodeForXml(((IUriNode)n).Uri.ToString()));
                     writer.WriteEndElement();
                     break;
                 default:

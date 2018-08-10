@@ -61,17 +61,17 @@ namespace VDS.RDF.Writing.Formatting
                 {
                     if (prefix.Equals(String.Empty))
                     {
-                        output.Append(" xmlns=\"" + WriterHelper.EncodeForXml(g.NamespaceMap.GetNamespaceUri(prefix).AbsoluteUri) + "\"");
+                        output.Append(" xmlns=\"" + WriterHelper.EncodeForXml(g.NamespaceMap.GetNamespaceUri(prefix).ToString()) + "\"");
                     }
                     else
                     {
-                        output.Append(" xmlns:" + prefix + "=\"" + WriterHelper.EncodeForXml(g.NamespaceMap.GetNamespaceUri(prefix).AbsoluteUri) + "\"");
+                        output.Append(" xmlns:" + prefix + "=\"" + WriterHelper.EncodeForXml(g.NamespaceMap.GetNamespaceUri(prefix).ToString()) + "\"");
                     }
                 }
             }
             if (g.BaseUri != null)
             {
-                output.Append(" xml:base=\"" + WriterHelper.EncodeForXml(g.BaseUri.AbsoluteUri) + "\"");
+                output.Append(" xml:base=\"" + WriterHelper.EncodeForXml(g.BaseUri.ToString()) + "\"");
             }
             output.Append(">");
             return output.ToString();
@@ -93,11 +93,11 @@ namespace VDS.RDF.Writing.Formatting
                 {
                     if (prefix.Equals(String.Empty))
                     {
-                        output.Append(" xmlns=\"" + WriterHelper.EncodeForXml(namespaces.GetNamespaceUri(prefix).AbsoluteUri) + "\"");
+                        output.Append(" xmlns=\"" + WriterHelper.EncodeForXml(namespaces.GetNamespaceUri(prefix).ToString()) + "\"");
                     }
                     else
                     {
-                        output.Append(" xmlns:" + prefix + "=\"" + WriterHelper.EncodeForXml(namespaces.GetNamespaceUri(prefix).AbsoluteUri) + "\"");
+                        output.Append(" xmlns:" + prefix + "=\"" + WriterHelper.EncodeForXml(namespaces.GetNamespaceUri(prefix).ToString()) + "\"");
                     }
                 }
             }
@@ -125,7 +125,7 @@ namespace VDS.RDF.Writing.Formatting
 
         private void GetQName(Uri u, out String qname, out String ns)
         {
-            if (_mapper != null && _mapper.ReduceToQName(u.AbsoluteUri, out qname) && RdfXmlSpecsHelper.IsValidQName(qname))
+            if (_mapper != null && _mapper.ReduceToQName(u.ToString(), out qname) && RdfXmlSpecsHelper.IsValidQName(qname))
             {
                 // Succesfully reduced to a QName using the known namespaces
                 ns = String.Empty;
@@ -133,14 +133,14 @@ namespace VDS.RDF.Writing.Formatting
             }
             else if (!u.Fragment.Equals(String.Empty))
             {
-                ns = u.AbsoluteUri.Substring(0, u.AbsoluteUri.Length - u.Fragment.Length + 1);
+                ns = u.ToString().Substring(0, u.ToString().Length - u.Fragment.Length + 1);
                 qname = u.Fragment.Substring(1);
             }
             else
             {
                 qname = u.Segments.LastOrDefault();
                 if (qname == null || !RdfXmlSpecsHelper.IsValidQName(qname)) throw new RdfOutputException(WriterErrorMessages.UnreducablePropertyURIUnserializable);
-                ns = u.AbsoluteUri.Substring(0, u.AbsoluteUri.Length - qname.Length);
+                ns = u.ToString().Substring(0, u.ToString().Length - qname.Length);
             }
         }
 
@@ -219,7 +219,7 @@ namespace VDS.RDF.Writing.Formatting
                         }
                         else
                         {
-                            output.AppendLine(" rdf:datatype=\"" + WriterHelper.EncodeForXml(lit.DataType.AbsoluteUri) + "\">" + WriterHelper.EncodeForXml(lit.Value) + "</" + qname + ">");
+                            output.AppendLine(" rdf:datatype=\"" + WriterHelper.EncodeForXml(lit.DataType.ToString()) + "\">" + WriterHelper.EncodeForXml(lit.Value) + "</" + qname + ">");
                         }
                     } 
                     else if (!lit.Language.Equals(String.Empty))

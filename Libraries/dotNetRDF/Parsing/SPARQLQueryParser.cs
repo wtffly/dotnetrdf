@@ -654,7 +654,7 @@ namespace VDS.RDF.Parsing
             {
                 if (uri.TokenType == Token.URI)
                 {
-                    String baseUri = (context.Query.BaseUri != null) ? context.Query.BaseUri.AbsoluteUri : String.Empty;
+                    String baseUri = (context.Query.BaseUri != null) ? context.Query.BaseUri.ToString() : String.Empty;
                     Uri u = UriFactory.Create(Tools.ResolveUri(uri.Value, baseUri));
                     if (prefix.Value.Length == 1)
                     {
@@ -1243,7 +1243,7 @@ namespace VDS.RDF.Parsing
                 if (next.TokenType == Token.URI)
                 {
                     // Default Graph Specified
-                    String baseUri = (context.Query.BaseUri == null) ? String.Empty : context.Query.BaseUri.AbsoluteUri;
+                    String baseUri = (context.Query.BaseUri == null) ? String.Empty : context.Query.BaseUri.ToString();
                     context.Query.AddDefaultGraph(UriFactory.Create(Tools.ResolveUri(next.Value, baseUri)));
                     context.Tokens.Dequeue();
                 }
@@ -1260,7 +1260,7 @@ namespace VDS.RDF.Parsing
                     next = context.Tokens.Peek();
                     if (next.TokenType == Token.URI) 
                     {
-                        String baseUri = (context.Query.BaseUri == null) ? String.Empty : context.Query.BaseUri.AbsoluteUri;
+                        String baseUri = (context.Query.BaseUri == null) ? String.Empty : context.Query.BaseUri.ToString();
                         context.Query.AddNamedGraph(UriFactory.Create(Tools.ResolveUri(next.Value, baseUri)));
                         context.Tokens.Dequeue();
                     }
@@ -3730,7 +3730,7 @@ namespace VDS.RDF.Parsing
                     LiteralWithDataTypeToken litdt = (LiteralWithDataTypeToken)t;
                     if (litdt.DataType.StartsWith("<"))
                     {
-                        baseUri = (context.Query.BaseUri == null) ? String.Empty : context.Query.BaseUri.AbsoluteUri;
+                        baseUri = (context.Query.BaseUri == null) ? String.Empty : context.Query.BaseUri.ToString();
                         u = UriFactory.Create(Tools.ResolveUri(litdt.DataType.Substring(1, litdt.DataType.Length - 2), baseUri));
                         return new NodeMatchPattern(new NonNormalizedLiteralNode(null, litdt.Value, u));
                     }

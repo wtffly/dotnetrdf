@@ -84,7 +84,7 @@ namespace VDS.RDF.Update.Commands
                     {
                         if (_sourceUri != null)
                         {
-                            throw new SparqlUpdateException("Cannot ADD from Graph <" + _sourceUri.AbsoluteUri + "> as it does not exist");
+                            throw new SparqlUpdateException("Cannot ADD from Graph <" + _sourceUri.ToString() + "> as it does not exist");
                         }
                         else
                         {

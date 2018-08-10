@@ -155,7 +155,7 @@ namespace VDS.RDF.Writing.Contexts
         /// <returns></returns>
         public virtual String FormatUri(Uri u)
         {
-            return FormatUri(u.AbsoluteUri);
+            return FormatUri(u.ToString());
         }
     }
 }

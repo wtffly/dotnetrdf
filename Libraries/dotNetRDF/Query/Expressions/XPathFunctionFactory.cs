@@ -155,11 +155,11 @@ namespace VDS.RDF.Query.Expressions
         /// <summary>
         /// Argument Type Validator for validating that a Literal either has no datatype or is a String
         /// </summary>
-        public static Func<Uri, bool> AcceptStringArguments = (u => u == null || u.AbsoluteUri.Equals(XmlSpecsHelper.XmlSchemaDataTypeString));
+        public static Func<Uri, bool> AcceptStringArguments = (u => u == null || u.ToString().Equals(XmlSpecsHelper.XmlSchemaDataTypeString));
         /// <summary>
         /// Argument Type Validator for validating that a Literal has an Integer datatype
         /// </summary>
-        public static Func<Uri, bool> AcceptIntegerArguments = (u => u != null && SparqlSpecsHelper.IntegerDataTypes.Contains(u.AbsoluteUri));
+        public static Func<Uri, bool> AcceptIntegerArguments = (u => u != null && SparqlSpecsHelper.IntegerDataTypes.Contains(u.ToString()));
         /// <summary>
         /// Argument Type Validator for validating that a Literal has a Numeric datatype
         /// </summary>
@@ -182,7 +182,7 @@ namespace VDS.RDF.Query.Expressions
                 return false;
             }
 
-            String func = u.AbsoluteUri;
+            String func = u.ToString();
             if (func.StartsWith(XPathFunctionsNamespace))
             {
                 func = func.Substring(XPathFunctionsNamespace.Length);

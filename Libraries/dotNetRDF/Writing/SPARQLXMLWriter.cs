@@ -166,7 +166,7 @@ namespace VDS.RDF.Writing
                                     else if (l.DataType != null)
                                     {
                                         writer.WriteStartAttribute("datatype");
-                                        writer.WriteRaw(WriterHelper.EncodeForXml(l.DataType.AbsoluteUri));
+                                        writer.WriteRaw(WriterHelper.EncodeForXml(l.DataType.ToString()));
                                         writer.WriteEndAttribute();
                                     }
 
@@ -178,7 +178,7 @@ namespace VDS.RDF.Writing
                                 case NodeType.Uri:
                                     // <uri> element
                                     writer.WriteStartElement("uri");
-                                    writer.WriteRaw(WriterHelper.EncodeForXml(((IUriNode)n).Uri.AbsoluteUri));
+                                    writer.WriteRaw(WriterHelper.EncodeForXml(((IUriNode)n).Uri.ToString()));
                                     writer.WriteEndElement();
                                     break;
 

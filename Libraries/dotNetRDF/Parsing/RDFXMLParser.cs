@@ -398,7 +398,7 @@ namespace VDS.RDF.Parsing
             String localName = root.Children[0].LocalName;
             String prefix = root.Children[0].Namespace;
             if (localName.Equals("RDF") && 
-                ((context.Namespaces.HasNamespace(prefix) && context.Namespaces.GetNamespaceUri(prefix).AbsoluteUri.Equals(NamespaceMapper.RDF)) 
+                ((context.Namespaces.HasNamespace(prefix) && context.Namespaces.GetNamespaceUri(prefix).ToString().Equals(NamespaceMapper.RDF)) 
                  || root.DocumentElement.NamespaceAttributes.Any(ns => ns.Prefix.Equals(prefix) && ns.Uri.Equals(NamespaceMapper.RDF))))
             {
                 GrammarProductionRDF(context, root.Children[0]);
@@ -430,7 +430,7 @@ namespace VDS.RDF.Parsing
             String localName = element.LocalName;
             String prefix = element.Namespace;
             if (localName.Equals("RDF") || 
-                ((context.Namespaces.HasNamespace(prefix) && context.Namespaces.GetNamespaceUri(prefix).AbsoluteUri.Equals(NamespaceMapper.RDF)) 
+                ((context.Namespaces.HasNamespace(prefix) && context.Namespaces.GetNamespaceUri(prefix).ToString().Equals(NamespaceMapper.RDF)) 
                  || element.NamespaceAttributes.Any(ns => ns.Prefix.Equals(prefix) && ns.Uri.Equals(NamespaceMapper.RDF))))
             {
                 // This is OK
@@ -1762,7 +1762,7 @@ namespace VDS.RDF.Parsing
             }
             foreach (NamespaceAttributeEvent ns in evt.NamespaceAttributes)
             {
-                if (!context.Namespaces.HasNamespace(ns.Prefix) || !context.Namespaces.GetNamespaceUri(ns.Prefix).AbsoluteUri.Equals(ns.Uri))
+                if (!context.Namespaces.HasNamespace(ns.Prefix) || !context.Namespaces.GetNamespaceUri(ns.Prefix).ToString().Equals(ns.Uri))
                 {
                     context.Namespaces.AddNamespace(ns.Prefix, UriFactory.Create(ns.Uri));
                     if (!context.Handler.HandleNamespace(ns.Prefix, UriFactory.Create(ns.Uri))) ParserHelper.Stop();

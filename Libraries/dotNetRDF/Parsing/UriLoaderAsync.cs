@@ -66,11 +66,11 @@ namespace VDS.RDF.Parsing
                 RaiseWarning("This is a file: URI so invoking the FileLoader instead");
                 if (Path.DirectorySeparatorChar == '/')
                 {
-                    FileLoader.Load(g, u.AbsoluteUri.Substring(7), parser);
+                    FileLoader.Load(g, u.ToString().Substring(7), parser);
                 }
                 else
                 {
-                    FileLoader.Load(g, u.AbsoluteUri.Substring(8), parser);
+                    FileLoader.Load(g, u.ToString().Substring(8), parser);
                 }
                 // FileLoader.Load() will run synchronously so once this completes we can invoke the callback
                 callback(g, state);
@@ -152,11 +152,11 @@ namespace VDS.RDF.Parsing
                     RaiseWarning("This is a file: URI so invoking the FileLoader instead");
                     if (Path.DirectorySeparatorChar == '/')
                     {
-                        FileLoader.Load(handler, u.AbsoluteUri.Substring(7), parser);
+                        FileLoader.Load(handler, u.ToString().Substring(7), parser);
                     }
                     else
                     {
-                        FileLoader.Load(handler, u.AbsoluteUri.Substring(8), parser);
+                        FileLoader.Load(handler, u.ToString().Substring(8), parser);
                     }
                     // FileLoader.Load() will run synchronously so once this completes we can invoke the callback
                     callback(handler, state);
@@ -234,28 +234,28 @@ namespace VDS.RDF.Parsing
                             catch (WebException webEx)
                             {
                                 if (webEx.Response != null) Tools.HttpDebugResponse((HttpWebResponse)webEx.Response);
-                                callback(handler, new AsyncError(new RdfParseException("A HTTP Error occurred loading the URI '" + u.AbsoluteUri + "' asynchronously, see inner exeption for details", webEx), state));
+                                callback(handler, new AsyncError(new RdfParseException("A HTTP Error occurred loading the URI '" + u.ToString() + "' asynchronously, see inner exeption for details", webEx), state));
                             }
                             catch (Exception ex)
                             {
-                                callback(handler, new AsyncError(new RdfParseException("Unexpected error while loading the URI '" + u.AbsoluteUri + "' asynchronously, see inner exception for details", ex), state));
+                                callback(handler, new AsyncError(new RdfParseException("Unexpected error while loading the URI '" + u.ToString() + "' asynchronously, see inner exception for details", ex), state));
                             }
                         }, null);
                 }
                 catch (WebException webEx)
                 {
                     if (webEx.Response != null) Tools.HttpDebugResponse((HttpWebResponse) webEx.Response);
-                    callback(handler, new AsyncError(new RdfParseException("A HTTP Error occurred loading the URI '" + u.AbsoluteUri + "' asynchronously, see inner exeption for details", webEx), state));
+                    callback(handler, new AsyncError(new RdfParseException("A HTTP Error occurred loading the URI '" + u.ToString() + "' asynchronously, see inner exeption for details", webEx), state));
                 }
                 catch (Exception ex)
                 {
-                    callback(handler, new AsyncError(new RdfParseException("Unexpected error while loading the URI '" + u.AbsoluteUri + "' asynchronously, see inner exception for details", ex), state));
+                    callback(handler, new AsyncError(new RdfParseException("Unexpected error while loading the URI '" + u.ToString() + "' asynchronously, see inner exception for details", ex), state));
                 }
             }
             catch (UriFormatException uriEx)
             {
                 // URI Format Invalid
-                throw new RdfParseException("Unable to load from the given URI '" + u.AbsoluteUri + "' since it's format was invalid, see inner exception for details", uriEx);
+                throw new RdfParseException("Unable to load from the given URI '" + u.ToString() + "' since it's format was invalid, see inner exception for details", uriEx);
             }
         }
 
@@ -357,11 +357,11 @@ namespace VDS.RDF.Parsing
                     RaiseWarning("This is a file: URI so invoking the FileLoader instead");
                     if (Path.DirectorySeparatorChar == '/')
                     {
-                        FileLoader.Load(handler, u.AbsoluteUri.Substring(7), parser);
+                        FileLoader.Load(handler, u.ToString().Substring(7), parser);
                     }
                     else
                     {
-                        FileLoader.Load(handler, u.AbsoluteUri.Substring(8), parser);
+                        FileLoader.Load(handler, u.ToString().Substring(8), parser);
                     }
                     // FileLoader.Load() will run synchronously so once this completes we can invoke the callback
                     callback(handler, state);
@@ -462,28 +462,28 @@ namespace VDS.RDF.Parsing
                             catch (WebException webEx)
                             {
                                 if (webEx.Response != null) Tools.HttpDebugResponse((HttpWebResponse)webEx.Response);
-                                callback(handler, new AsyncError(new RdfParseException("A HTTP Error occurred loading the URI '" + u.AbsoluteUri + "' asynchronously, see inner exeption for details", webEx), state));
+                                callback(handler, new AsyncError(new RdfParseException("A HTTP Error occurred loading the URI '" + u.ToString() + "' asynchronously, see inner exeption for details", webEx), state));
                             }
                             catch (Exception ex)
                             {
-                                callback(handler, new AsyncError(new RdfParseException("Unexpected error while loading the URI '" + u.AbsoluteUri + "' asynchronously, see inner exception for details", ex), state));
+                                callback(handler, new AsyncError(new RdfParseException("Unexpected error while loading the URI '" + u.ToString() + "' asynchronously, see inner exception for details", ex), state));
                             }
                         }, null);
                 }
                 catch (WebException webEx)
                 {
                     if (webEx.Response != null) Tools.HttpDebugResponse((HttpWebResponse)webEx.Response);
-                    callback(handler, new AsyncError(new RdfParseException("A HTTP Error occurred loading the URI '" + u.AbsoluteUri + "' asynchronously, see inner exeption for details", webEx), state));
+                    callback(handler, new AsyncError(new RdfParseException("A HTTP Error occurred loading the URI '" + u.ToString() + "' asynchronously, see inner exeption for details", webEx), state));
                 }
                 catch (Exception ex)
                 {
-                    callback(handler, new AsyncError(new RdfParseException("Unexpected error while loading the URI '" + u.AbsoluteUri + "' asynchronously, see inner exception for details", ex), state));
+                    callback(handler, new AsyncError(new RdfParseException("Unexpected error while loading the URI '" + u.ToString() + "' asynchronously, see inner exception for details", ex), state));
                 }
             }
             catch (UriFormatException uriEx)
             {
                 // Uri Format Invalid
-                throw new RdfException("Unable to load from the given URI '" + u.AbsoluteUri + "' since it's format was invalid, see inner exception for details", uriEx);
+                throw new RdfException("Unable to load from the given URI '" + u.ToString() + "' since it's format was invalid, see inner exception for details", uriEx);
             }
         }
 

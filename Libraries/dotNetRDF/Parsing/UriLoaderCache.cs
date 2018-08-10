@@ -238,7 +238,7 @@ namespace VDS.RDF.Parsing
         {
             if (_canCacheETag)
             {
-                if (_nocache.Contains(u.GetSha256Hash())) throw new KeyNotFoundException("No ETag was found for the URI " + u.AbsoluteUri);
+                if (_nocache.Contains(u.GetSha256Hash())) throw new KeyNotFoundException("No ETag was found for the URI " + u.ToString());
                 int id = u.GetEnhancedHashCode();
                 if (_etags.ContainsKey(id))
                 {
@@ -246,12 +246,12 @@ namespace VDS.RDF.Parsing
                 }
                 else
                 {
-                    throw new KeyNotFoundException("No ETag was found for the URI " + u.AbsoluteUri);
+                    throw new KeyNotFoundException("No ETag was found for the URI " + u.ToString());
                 }
             }
             else
             {
-                throw new KeyNotFoundException("No ETag was found for the URI " + u.AbsoluteUri);
+                throw new KeyNotFoundException("No ETag was found for the URI " + u.ToString());
             }
         }
 
@@ -399,7 +399,7 @@ namespace VDS.RDF.Parsing
             IRdfHandler handler = null;
             try
             {
-                bool cacheTwice = !requestUri.AbsoluteUri.Equals(responseUri.AbsoluteUri, StringComparison.OrdinalIgnoreCase);
+                bool cacheTwice = !requestUri.ToString().Equals(responseUri.ToString(), StringComparison.OrdinalIgnoreCase);
 
                 // Cache the ETag if present
                 if (_canCacheETag && etag != null && !etag.Equals(String.Empty))

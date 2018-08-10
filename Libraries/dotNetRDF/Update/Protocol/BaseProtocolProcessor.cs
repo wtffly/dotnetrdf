@@ -115,7 +115,7 @@ namespace VDS.RDF.Update.Protocol
                 }
                 else
                 {
-                    graphUri = UriFactory.Create(context.Request.Url.AbsoluteUri);
+                    graphUri = UriFactory.Create(context.Request.Url.ToString());
                 }
             }
             catch (UriFormatException)
@@ -160,7 +160,7 @@ namespace VDS.RDF.Update.Protocol
                 }
                 else
                 {
-                    graphUri = UriFactory.Create(context.Request.Url.AbsoluteUri);
+                    graphUri = UriFactory.Create(context.Request.Url.ToString());
                 }
             }
             catch (UriFormatException)
@@ -185,7 +185,7 @@ namespace VDS.RDF.Update.Protocol
             String graphID = context.Request.UserHostAddress + "/" + DateTime.Now.ToString("yyyyMMddHHmmssfffffffK");
             graphID = graphID.GetSha256Hash();
 
-            Uri baseUri = UriFactory.Create(context.Request.Url.AbsoluteUri);
+            Uri baseUri = UriFactory.Create(context.Request.Url.ToString());
             if (baseUri.ToString().EndsWith("/"))
             {
                 return new Uri(baseUri, graphID);

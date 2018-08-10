@@ -93,12 +93,12 @@ namespace VDS.RDF.Query.Expressions.Functions.Sparql.String
             if (stringLit.DataType != null)
             {
                 // If 1st argument has a DataType must be an xsd:string or not valid
-                if (!stringLit.DataType.AbsoluteUri.Equals(XmlSpecsHelper.XmlSchemaDataTypeString)) return false;
+                if (!stringLit.DataType.ToString().Equals(XmlSpecsHelper.XmlSchemaDataTypeString)) return false;
 
                 if (argLit.DataType != null)
                 {
                     // If 2nd argument also has a DataType must also be an xsd:string or not valid
-                    if (!argLit.DataType.AbsoluteUri.Equals(XmlSpecsHelper.XmlSchemaDataTypeString)) return false;
+                    if (!argLit.DataType.ToString().Equals(XmlSpecsHelper.XmlSchemaDataTypeString)) return false;
                     return true;
                 }
                 else if (argLit.Language.Equals(string.Empty))
@@ -119,7 +119,7 @@ namespace VDS.RDF.Query.Expressions.Functions.Sparql.String
                 {
                     // If 1st argument has a Language Tag and 2nd Argument is typed then must be xsd:string
                     // to be valid
-                    return argLit.DataType.AbsoluteUri.Equals(XmlSpecsHelper.XmlSchemaDataTypeString);
+                    return argLit.DataType.ToString().Equals(XmlSpecsHelper.XmlSchemaDataTypeString);
                 }
                 else if (argLit.Language.Equals(string.Empty) || stringLit.Language.Equals(argLit.Language))
                 {
@@ -138,7 +138,7 @@ namespace VDS.RDF.Query.Expressions.Functions.Sparql.String
                 if (argLit.DataType != null)
                 {
                     // If 1st argument is plain literal then 2nd argument must be xsd:string if typed
-                    return argLit.DataType.AbsoluteUri.Equals(XmlSpecsHelper.XmlSchemaDataTypeString);
+                    return argLit.DataType.ToString().Equals(XmlSpecsHelper.XmlSchemaDataTypeString);
                 }
                 else if (argLit.Language.Equals(string.Empty))
                 {

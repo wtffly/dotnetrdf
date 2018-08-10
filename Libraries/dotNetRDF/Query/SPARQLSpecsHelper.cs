@@ -1198,7 +1198,7 @@ namespace VDS.RDF.Query
         /// <returns></returns>
         public static SparqlNumericType GetNumericTypeFromDataTypeUri(Uri dtUri)
         {
-            return GetNumericTypeFromDataTypeUri(dtUri.AbsoluteUri);
+            return GetNumericTypeFromDataTypeUri(dtUri.ToString());
         }
 
         /// <summary>

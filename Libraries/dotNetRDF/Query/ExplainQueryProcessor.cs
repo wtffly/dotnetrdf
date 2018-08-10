@@ -419,7 +419,7 @@ namespace VDS.RDF.Query
                 case Token.URI:
                     // Only a single active graph
                     Uri activeGraphUri = UriFactory.Create(Tools.ResolveUriOrQName(graph.GraphSpecifier, context.Query.NamespaceMap, context.Query.BaseUri));
-                    PrintExplanations("Graph clause accesses single named graph " + activeGraphUri.AbsoluteUri);
+                    PrintExplanations("Graph clause accesses single named graph " + activeGraphUri.ToString());
                     break;
                 case Token.VARIABLE:
                     // Potentially many active graphs
@@ -454,7 +454,7 @@ namespace VDS.RDF.Query
                         {
                             // Query specifies one/more named Graphs
                             PrintExplanations("Graph clause uses variable ?" + gvar + " which is restricted to graphs specified by the queries FROM NAMED clause(s)");
-                            activeGraphs.AddRange(context.Query.NamedGraphs.Select(u => u.AbsoluteUri));
+                            activeGraphs.AddRange(context.Query.NamedGraphs.Select(u => u.ToString()));
                         }
                         else if (context.Query != null && context.Query.DefaultGraphs.Any() && !context.Query.NamedGraphs.Any())
                         {

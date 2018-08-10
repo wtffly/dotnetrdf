@@ -357,7 +357,7 @@ namespace VDS.RDF
             else if (EqualityHelper.AreUrisEqual(a.DataType, b.DataType))
             {
                 // Are we using a known and orderable DataType?
-                String type = a.DataType.AbsoluteUri;
+                String type = a.DataType.ToString();
                 if (!XmlSpecsHelper.IsSupportedType(type))
                 {
                     // Don't know how to order so use specified order on the value

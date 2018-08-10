@@ -186,7 +186,7 @@ namespace VDS.RDF
         public static int GetEnhancedHashCode(this Uri u)
         {
             if (u == null) throw new ArgumentNullException("Cannot calculate an Enhanced Hash Code for a null URI");
-            return u.AbsoluteUri.GetHashCode();
+            return u.ToString().GetHashCode();
         }
 
 #if NETCORE
@@ -203,7 +203,7 @@ namespace VDS.RDF
             // Only instantiate the SHA256 class when we first use it
             if (_sha256 == null) _sha256 = SHA256.Create();
 
-            Byte[] input = Encoding.UTF8.GetBytes(u.AbsoluteUri);
+            Byte[] input = Encoding.UTF8.GetBytes(u.ToString());
             Byte[] output = _sha256.ComputeHash(input);
 
             StringBuilder hash = new StringBuilder();
@@ -254,7 +254,7 @@ namespace VDS.RDF
             // Only instantiate the SHA256 class when we first use it
             if (_sha256 == null) _sha256 = new SHA256Managed();
 
-            Byte[] input = Encoding.UTF8.GetBytes(u.AbsoluteUri);
+            Byte[] input = Encoding.UTF8.GetBytes(u.ToString());
             Byte[] output = _sha256.ComputeHash(input);
 
             StringBuilder hash = new StringBuilder();
@@ -702,7 +702,7 @@ namespace VDS.RDF
         /// <returns></returns>
         internal static String ToSafeString(this Uri u)
         {
-            return (u == null) ? String.Empty : u.AbsoluteUri;
+            return (u == null) ? String.Empty : u.ToString();
         }
 
         /// <summary>

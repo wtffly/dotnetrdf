@@ -75,7 +75,7 @@ namespace VDS.RDF.Parsing.Suites
             Assert.Equal(NodeType.Literal, first.NodeType);
             ILiteralNode firstLit = (ILiteralNode) first;
             Assert.NotNull(firstLit.DataType);
-            Assert.Equal(XmlSpecsHelper.XmlSchemaDataTypeInteger, firstLit.DataType.AbsoluteUri);
+            Assert.Equal(XmlSpecsHelper.XmlSchemaDataTypeInteger, firstLit.DataType.ToString());
             Assert.Equal("1993", firstLit.Value);
 
             Assert.Equal(NodeType.Literal, second.NodeType);

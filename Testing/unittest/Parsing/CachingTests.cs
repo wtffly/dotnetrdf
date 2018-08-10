@@ -76,10 +76,10 @@ namespace VDS.RDF.Parsing
             Uri a = new Uri(ConfigurationLoader.ClassTripleStore);
             Uri b = new Uri(ConfigurationLoader.ClassGraph);
 
-            Console.WriteLine("URI A: " + a.AbsoluteUri + " is equivalent to " + Tools.StripUriFragment(a).AbsoluteUri);
-            Console.WriteLine("URI B:" + b.AbsoluteUri + " is equivalent to " + Tools.StripUriFragment(b).AbsoluteUri);
+            Console.WriteLine("URI A: " + a.ToString() + " is equivalent to " + Tools.StripUriFragment(a).ToString());
+            Console.WriteLine("URI B:" + b.ToString() + " is equivalent to " + Tools.StripUriFragment(b).ToString());
 
-            Assert.Equal(Tools.StripUriFragment(a).AbsoluteUri, Tools.StripUriFragment(b).AbsoluteUri);
+            Assert.Equal(Tools.StripUriFragment(a).ToString(), Tools.StripUriFragment(b).ToString());
 
             Graph g = new Graph();
             UriLoader.Load(g, a);

@@ -153,7 +153,7 @@ namespace VDS.RDF.Query.Expressions.Functions
         {
             StringBuilder output = new StringBuilder();
             output.Append('<');
-            output.Append(_funcUri.AbsoluteUri.Replace(">", "\\>"));
+            output.Append(_funcUri.ToString().Replace(">", "\\>"));
             output.Append('>');
             output.Append('(');
             for (int i = 0; i < _args.Count; i++)

@@ -110,7 +110,7 @@ namespace VDS.RDF.Query.Expressions
                 return false;
             }
 
-            String func = u.AbsoluteUri;
+            String func = u.ToString();
             if (func.StartsWith(ArqFunctionsNamespace))
             {
                 func = func.Substring(ArqFunctionsNamespace.Length);

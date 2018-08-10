@@ -116,7 +116,7 @@ namespace VDS.RDF.Writing
             // Named graphs
             if (graph.BaseUri != null)
             {
-                writer.WriteAttributeString(GraphMLSpecsHelper.Id, graph.BaseUri.AbsoluteUri);
+                writer.WriteAttributeString(GraphMLSpecsHelper.Id, graph.BaseUri.ToString());
             }
 
             // RDF is always a directed graph

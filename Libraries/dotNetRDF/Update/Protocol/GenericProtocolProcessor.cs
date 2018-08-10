@@ -148,11 +148,11 @@ namespace VDS.RDF.Update.Protocol
             context.Response.StatusCode = (int)HttpStatusCode.Created;
             try
             {
-                context.Response.Headers.Add("Location", graphUri.AbsoluteUri);
+                context.Response.Headers.Add("Location", graphUri.ToString());
             }
             catch (PlatformNotSupportedException)
             {
-                context.Response.AddHeader("Location", graphUri.AbsoluteUri);
+                context.Response.AddHeader("Location", graphUri.ToString());
             }
         }
 

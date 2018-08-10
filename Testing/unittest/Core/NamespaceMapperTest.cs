@@ -58,14 +58,14 @@ namespace VDS.RDF
             nsmap.AddNamespace("ex", new Uri("http://example.org/"));
             Assert.True(eventRaised);
             eventRaised = false;
-            Console.WriteLine(nsmap.GetNamespaceUri("ex").AbsoluteUri);
+            Console.WriteLine(nsmap.GetNamespaceUri("ex").ToString());
             Console.WriteLine();
 
             Console.WriteLine("Trying to modify the example Namespace");
             nsmap.AddNamespace("ex", new Uri("http://example.org/test/"));
             Assert.True(eventRaised);
             eventRaised = false;
-            Console.WriteLine(nsmap.GetNamespaceUri("ex").AbsoluteUri);
+            Console.WriteLine(nsmap.GetNamespaceUri("ex").ToString());
             Console.WriteLine();
 
             Console.WriteLine("Trying to remove the example Namespace");
@@ -93,7 +93,7 @@ namespace VDS.RDF
             Console.WriteLine("NamespaceMapper now contains the following Namespaces:");
             foreach (String prefix in nsmap.Prefixes)
             {
-                Console.WriteLine("\t" + prefix + " <" + nsmap.GetNamespaceUri(prefix).AbsoluteUri + ">");
+                Console.WriteLine("\t" + prefix + " <" + nsmap.GetNamespaceUri(prefix).ToString() + ">");
             }
             Assert.Equal(nsmap.GetNamespaceUri("ex"), new Uri("http://example.org/"));
             Assert.Equal(nsmap.GetNamespaceUri("ns1"), new Uri("http://example.org/test/"));

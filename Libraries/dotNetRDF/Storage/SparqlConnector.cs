@@ -513,7 +513,7 @@ namespace VDS.RDF.Storage
         /// <returns></returns>
         public override string ToString()
         {
-            return "[SPARQL Query] " + _endpoint.Uri.AbsoluteUri;
+            return "[SPARQL Query] " + _endpoint.Uri.ToString();
         }
 
         /// <summary>
@@ -560,7 +560,7 @@ namespace VDS.RDF.Storage
                 INode defGraphUri = context.Graph.CreateUriNode(UriFactory.Create(ConfigurationLoader.PropertyDefaultGraphUri));
                 INode namedGraphUri = context.Graph.CreateUriNode(UriFactory.Create(ConfigurationLoader.PropertyNamedGraphUri));
                 
-                context.Graph.Assert(new Triple(manager, endpointUri, context.Graph.CreateLiteralNode(_endpoint.Uri.AbsoluteUri)));
+                context.Graph.Assert(new Triple(manager, endpointUri, context.Graph.CreateLiteralNode(_endpoint.Uri.ToString())));
                 foreach (String u in _endpoint.DefaultGraphs)
                 {
                     context.Graph.Assert(new Triple(manager, defGraphUri, context.Graph.CreateUriNode(UriFactory.Create(u))));
@@ -872,7 +872,7 @@ namespace VDS.RDF.Storage
         /// <returns></returns>
         public override string ToString()
         {
-            return "[SPARQL Query & Update] Query: " + _endpoint.Uri.AbsoluteUri + " Update: " + _updateEndpoint.Uri.AbsoluteUri;
+            return "[SPARQL Query & Update] Query: " + _endpoint.Uri.ToString() + " Update: " + _updateEndpoint.Uri.ToString();
         }
 
         /// <summary>
@@ -905,7 +905,7 @@ namespace VDS.RDF.Storage
                 // Use the direct serialization method
                 INode endpointUri = context.Graph.CreateUriNode(UriFactory.Create(ConfigurationLoader.PropertyUpdateEndpointUri));
 
-                context.Graph.Assert(new Triple(manager, endpointUri, context.Graph.CreateLiteralNode(_endpoint.Uri.AbsoluteUri)));
+                context.Graph.Assert(new Triple(manager, endpointUri, context.Graph.CreateLiteralNode(_endpoint.Uri.ToString())));
             }
         }
     }

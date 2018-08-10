@@ -492,7 +492,7 @@ namespace VDS.RDF.Configuration
                     {
                         // Parse the Class and Property out of the URI
                         String className = propertyUri.AbsolutePath;
-                        if (propertyUri.Fragment.Length <= 1) throw new DotNetRdfConfigurationException("Malformed Configure Options URI used as subject for a dnr:configure triple, <" + propertyUri.AbsoluteUri + "> is missing the fragment identifier to specify the property name");
+                        if (propertyUri.Fragment.Length <= 1) throw new DotNetRdfConfigurationException("Malformed Configure Options URI used as subject for a dnr:configure triple, <" + propertyUri.ToString() + "> is missing the fragment identifier to specify the property name");
                         String propName = propertyUri.Fragment.Substring(1);
 
                         // Get the Value we are setting to this property
@@ -500,12 +500,12 @@ namespace VDS.RDF.Configuration
 
                         // Get the type whose static option we are attempting to change
                         Type type = Type.GetType(className);
-                        if (type == null) throw new DotNetRdfConfigurationException("Malformed Configure Options URI used as a subject for a dnr:configure triple, <" + propertyUri.AbsoluteUri + "> specifies a class '" + className + "' which could not be loaded.  Please ensure the type name is fully qualified");
+                        if (type == null) throw new DotNetRdfConfigurationException("Malformed Configure Options URI used as a subject for a dnr:configure triple, <" + propertyUri.ToString() + "> specifies a class '" + className + "' which could not be loaded.  Please ensure the type name is fully qualified");
 
                         // Get the property in question
                         PropertyInfo property = type.GetProperty(propName);
-                        if (property == null) throw new DotNetRdfConfigurationException("Malformed Configure Options URI used as a subject for a dnr:configure triple, <" + propertyUri.AbsoluteUri + "> specifies a property '" + propName + "' which does not exist or is not static");
-                        if (!property.GetSetMethod().IsStatic) throw new DotNetRdfConfigurationException("Malformed Configure Options URI used as a subject for a dnr:configure triple, <" + propertyUri.AbsoluteUri + "> specifies a property '" + propName + "' which is not static");
+                        if (property == null) throw new DotNetRdfConfigurationException("Malformed Configure Options URI used as a subject for a dnr:configure triple, <" + propertyUri.ToString() + "> specifies a property '" + propName + "' which does not exist or is not static");
+                        if (!property.GetSetMethod().IsStatic) throw new DotNetRdfConfigurationException("Malformed Configure Options URI used as a subject for a dnr:configure triple, <" + propertyUri.ToString() + "> specifies a property '" + propName + "' which is not static");
                         Type valueType = property.PropertyType;
                         try
                         {
@@ -546,7 +546,7 @@ namespace VDS.RDF.Configuration
                             }
                             else
                             {
-                                throw new DotNetRdfConfigurationException("Configure Options URIs can currently only be used to configure static properties with int, long, bool, String, URI or enumeration typed values.  The URI <" + propertyUri.AbsoluteUri + "> points to a property with the unsupported type " + valueType.FullName);
+                                throw new DotNetRdfConfigurationException("Configure Options URIs can currently only be used to configure static properties with int, long, bool, String, URI or enumeration typed values.  The URI <" + propertyUri.ToString() + "> points to a property with the unsupported type " + valueType.FullName);
                             }
                         }
                         catch (DotNetRdfConfigurationException)
@@ -557,7 +557,7 @@ namespace VDS.RDF.Configuration
                         catch (Exception ex)
                         {
                             // Rewrap as Configuration error
-                            throw new DotNetRdfConfigurationException("Unexpected error trying to set the static property identified by the Configure Options URI <" + propertyUri.AbsoluteUri + ">, please ensure that the lexical form of the value being set is valid for the property you are trying to set", ex);
+                            throw new DotNetRdfConfigurationException("Unexpected error trying to set the static property identified by the Configure Options URI <" + propertyUri.ToString() + ">, please ensure that the lexical form of the value being set is valid for the property you are trying to set", ex);
                         }
                     }
                 }
@@ -1388,7 +1388,7 @@ namespace VDS.RDF.Configuration
             Uri uri = ((IUriNode)n).Uri;
             if (!uri.Scheme.Equals(UriSchemeAppSettings)) return n;
 
-            String strUri = uri.AbsoluteUri;
+            String strUri = uri.ToString();
             String key = strUri.Substring(strUri.IndexOf(':') + 1);
 
             var setting = SettingsProvider.GetSetting(key);

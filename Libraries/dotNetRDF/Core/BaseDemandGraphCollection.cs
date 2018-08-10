@@ -123,7 +123,7 @@ namespace VDS.RDF
                 }
                 catch
                 {
-                    throw new RdfException("The Graph with the URI " + graphUri.AbsoluteUri + " does not exist in this collection");
+                    throw new RdfException("The Graph with the URI " + graphUri.ToString() + " does not exist in this collection");
                 }
             }
             else
@@ -165,18 +165,18 @@ namespace VDS.RDF
                 try
                 {
                     Graph g = new Graph();
-                    FileLoader.Load(g, graphUri.AbsoluteUri.Substring(8));
+                    FileLoader.Load(g, graphUri.ToString().Substring(8));
 
                     return g;
                 }
                 catch
                 {
-                    throw new RdfException("The Graph with the URI " + graphUri.AbsoluteUri + " does not exist in this collection");
+                    throw new RdfException("The Graph with the URI " + graphUri.ToString() + " does not exist in this collection");
                 }
             }
             else
             {
-                throw new RdfException("The Graph with the URI " + graphUri.AbsoluteUri + " does not exist in this collection");
+                throw new RdfException("The Graph with the URI " + graphUri.ToString() + " does not exist in this collection");
             }
         }
     }

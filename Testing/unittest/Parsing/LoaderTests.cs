@@ -61,7 +61,7 @@ namespace VDS.RDF.Parsing
             {
                 Uri u = new Uri(uri);
 
-                Console.WriteLine("Testing URI " + u.AbsoluteUri);
+                Console.WriteLine("Testing URI " + u.ToString());
 
                 Graph g = new Graph();
                 DataUriLoader.Load(g, u);
@@ -97,7 +97,7 @@ namespace VDS.RDF.Parsing
             {
                 Uri u = new Uri(uri);
 
-                Console.WriteLine("Testing URI " + u.AbsoluteUri);
+                Console.WriteLine("Testing URI " + u.ToString());
 
                 Graph g = new Graph();
                 UriLoader.Load(g, u);

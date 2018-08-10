@@ -436,7 +436,7 @@ namespace VDS.RDF.Parsing
             var baseChanged = false;
             var oldLang = lang;
             var langChanged = false;
-            var baseUri = (evalContext.BaseUri == null) ? string.Empty : evalContext.BaseUri.AbsoluteUri;
+            var baseUri = (evalContext.BaseUri == null) ? string.Empty : evalContext.BaseUri.ToString();
 
 #region Steps 2-5 of the RDFa Processing Rules
 
@@ -799,7 +799,7 @@ namespace VDS.RDF.Parsing
                     if (dtNode.NodeType != NodeType.Uri) throw new RdfParseException("Cannot use a non-URI Node as a Dataype");
                     dt = ((IUriNode)dtNode).Uri;
 
-                    if (!dt.AbsoluteUri.Equals(RdfSpecsHelper.RdfXmlLiteral))
+                    if (!dt.ToString().Equals(RdfSpecsHelper.RdfXmlLiteral))
                     {
                         // There's a Datatype and it's not XML Literal
                         if (content)
@@ -1467,7 +1467,7 @@ namespace VDS.RDF.Parsing
                 else if (evalContext.NamespaceMap.HasNamespace(prefix))
                 {
                     // If the Node doesn't declare the Namespace
-                    SetAttribute(n, "xmlns:" + prefix, evalContext.NamespaceMap.GetNamespaceUri(prefix).AbsoluteUri);
+                    SetAttribute(n, "xmlns:" + prefix, evalContext.NamespaceMap.GetNamespaceUri(prefix).ToString());
                 }
                 else
                 {

@@ -97,7 +97,7 @@ namespace VDS.RDF.Update.Commands
             {
                 return true;
             }
-            return _graphUri.AbsoluteUri.Equals(graphUri.ToSafeString());
+            return _graphUri.ToString().Equals(graphUri.ToSafeString());
         }
 
         /// <summary>
@@ -192,11 +192,11 @@ namespace VDS.RDF.Update.Commands
             String silent = (_silent) ? "SILENT " : String.Empty;
             if (_graphUri == null)
             {
-                return "LOAD " + silent + "<" + _sourceUri.AbsoluteUri.Replace(">", "\\>") + ">";
+                return "LOAD " + silent + "<" + _sourceUri.ToString().Replace(">", "\\>") + ">";
             }
             else
             {
-                return "LOAD " + silent + "<" + _sourceUri.AbsoluteUri.Replace(">", "\\>") + "> INTO <" + _graphUri.AbsoluteUri.Replace(">", "\\>") + ">";
+                return "LOAD " + silent + "<" + _sourceUri.ToString().Replace(">", "\\>") + "> INTO <" + _graphUri.ToString().Replace(">", "\\>") + ">";
             }
         }
     }

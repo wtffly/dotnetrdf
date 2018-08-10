@@ -137,7 +137,7 @@ namespace VDS.RDF.Writing
             }
             else if (context.Graph.BaseUri != null)
             {
-                context.HtmlWriter.WriteEncodedText(" - " + context.Graph.BaseUri.AbsoluteUri);
+                context.HtmlWriter.WriteEncodedText(" - " + context.Graph.BaseUri.ToString());
             }
             context.HtmlWriter.RenderEndTag();
             if (!Stylesheet.Equals(String.Empty))
@@ -163,7 +163,7 @@ namespace VDS.RDF.Writing
             }
             else if (context.Graph.BaseUri != null)
             {
-                context.HtmlWriter.WriteEncodedText(" - " + context.Graph.BaseUri.AbsoluteUri);
+                context.HtmlWriter.WriteEncodedText(" - " + context.Graph.BaseUri.ToString());
             }
             context.HtmlWriter.RenderEndTag();
             context.HtmlWriter.WriteLine();
@@ -208,14 +208,14 @@ namespace VDS.RDF.Writing
                                 context.HtmlWriter.WriteEncodedText("Schema created by ");
                                 if (author.NodeType == NodeType.Uri)
                                 {
-                                    context.HtmlWriter.AddAttribute("href", ((IUriNode)author).Uri.AbsoluteUri);
+                                    context.HtmlWriter.AddAttribute("href", ((IUriNode)author).Uri.ToString());
                                     context.HtmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, CssClassUri);
                                     context.HtmlWriter.RenderBeginTag(HtmlTextWriterTag.A);
                                 }
                                 switch (authorName.NodeType)
                                 {
                                     case NodeType.Uri:
-                                        context.HtmlWriter.WriteEncodedText(((IUriNode)authorName).Uri.AbsoluteUri);
+                                        context.HtmlWriter.WriteEncodedText(((IUriNode)authorName).Uri.ToString());
                                         break;
                                     case NodeType.Literal:
                                         context.HtmlWriter.WriteEncodedText(((ILiteralNode)authorName).Value);
@@ -251,10 +251,10 @@ namespace VDS.RDF.Writing
                                     context.HtmlWriter.WriteEncodedText(prefix);
                                     context.HtmlWriter.RenderEndTag();
                                     context.HtmlWriter.WriteEncodedText(" and preferred Namespace URI is ");
-                                    context.HtmlWriter.AddAttribute(HtmlTextWriterAttribute.Href, context.QNameMapper.GetNamespaceUri(prefix).AbsoluteUri);
+                                    context.HtmlWriter.AddAttribute(HtmlTextWriterAttribute.Href, context.QNameMapper.GetNamespaceUri(prefix).ToString());
                                     context.HtmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, CssClassUri);
                                     context.HtmlWriter.RenderBeginTag(HtmlTextWriterTag.A);
-                                    context.HtmlWriter.WriteEncodedText(context.QNameMapper.GetNamespaceUri(prefix).AbsoluteUri);
+                                    context.HtmlWriter.WriteEncodedText(context.QNameMapper.GetNamespaceUri(prefix).ToString());
                                     context.HtmlWriter.RenderEndTag();
                                     context.HtmlWriter.RenderEndTag();
 

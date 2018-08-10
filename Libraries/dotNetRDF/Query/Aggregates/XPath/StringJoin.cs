@@ -130,7 +130,7 @@ namespace VDS.RDF.Query.Aggregates.XPath
                 ILiteralNode l = (ILiteralNode)temp;
                 if (l.DataType != null)
                 {
-                    if (l.DataType.AbsoluteUri.Equals(XmlSpecsHelper.XmlSchemaDataTypeString))
+                    if (l.DataType.ToString().Equals(XmlSpecsHelper.XmlSchemaDataTypeString))
                     {
                         return temp.AsString();
                     }
@@ -168,7 +168,7 @@ namespace VDS.RDF.Query.Aggregates.XPath
                 ILiteralNode l = (ILiteralNode)temp;
                 if (l.DataType != null)
                 {
-                    if (l.DataType.AbsoluteUri.Equals(XmlSpecsHelper.XmlSchemaDataTypeString))
+                    if (l.DataType.ToString().Equals(XmlSpecsHelper.XmlSchemaDataTypeString))
                     {
                         return l.Value;
                     }

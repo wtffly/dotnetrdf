@@ -472,7 +472,7 @@ namespace VDS.RDF.Query
                         }
 
                         // If a single request fails then the entire query fails
-                        throw new RdfQueryException("Federated Querying failed due to the query against the endpoint '" + _endpoints[i].Uri.AbsoluteUri + "' failing", ex);
+                        throw new RdfQueryException("Federated Querying failed due to the query against the endpoint '" + _endpoints[i].Uri.ToString() + "' failing", ex);
                     }
                     else
                     {

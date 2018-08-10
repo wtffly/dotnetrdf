@@ -518,11 +518,11 @@ namespace VDS.RDF.Storage
                 {
                     if (_fullContextEncoding)
                     {
-                        serviceParams.Add("context", "<" + g.BaseUri.AbsoluteUri + ">");
+                        serviceParams.Add("context", "<" + g.BaseUri.ToString() + ">");
                     }
                     else
                     {
-                        serviceParams.Add("context", g.BaseUri.AbsoluteUri);
+                        serviceParams.Add("context", g.BaseUri.ToString());
                     }
                     request = CreateRequest(_repositoriesPrefix + _store + "/statements", "*/*", "PUT", serviceParams);
                 }
@@ -750,11 +750,11 @@ namespace VDS.RDF.Storage
             {
                 if (_fullContextEncoding)
                 {
-                    serviceParams.Add("context", "<" + g.BaseUri.AbsoluteUri + ">");
+                    serviceParams.Add("context", "<" + g.BaseUri.ToString() + ">");
                 }
                 else
                 {
-                    serviceParams.Add("context", g.BaseUri.AbsoluteUri);
+                    serviceParams.Add("context", g.BaseUri.ToString());
                 }
                 request = CreateRequest(_repositoriesPrefix + _store + "/statements", "*/*", "PUT", serviceParams);
             }

@@ -76,7 +76,7 @@ namespace VDS.RDF.Query.Optimisation
             _replaceExpr = new ConstantTerm(replaceTerm);
             if (replaceTerm is IUriNode)
             {
-                _replaceToken = new UriToken("<" + ((IUriNode)replaceTerm).Uri.AbsoluteUri + ">", 0, 0, 0);
+                _replaceToken = new UriToken("<" + ((IUriNode)replaceTerm).Uri.ToString() + ">", 0, 0, 0);
             }
             _canReplaceObjects = true;
         }

@@ -440,7 +440,7 @@ namespace VDS.RDF.Parsing
             catch (UriFormatException uriEx)
             {
                 // Uri Format Invalid
-                throw new RdfParseException("Unable to load from the given URI '" + u.AbsoluteUri + "' since it's format was invalid", uriEx);
+                throw new RdfParseException("Unable to load from the given URI '" + u.ToString() + "' since it's format was invalid", uriEx);
             }
             catch (WebException webEx)
             {
@@ -485,7 +485,7 @@ namespace VDS.RDF.Parsing
                 }
 
                 // Some sort of HTTP Error occurred
-                throw new WebException("A HTTP Error occurred resolving the URI '" + u.AbsoluteUri + "'", webEx);
+                throw new WebException("A HTTP Error occurred resolving the URI '" + u.ToString() + "'", webEx);
             }
         }
 
@@ -552,11 +552,11 @@ namespace VDS.RDF.Parsing
                     RaiseWarning("This is a file: URI so invoking the FileLoader instead");
                     if (Path.DirectorySeparatorChar == '/')
                     {
-                        FileLoader.Load(handler, u.AbsoluteUri.Substring(7), parser);
+                        FileLoader.Load(handler, u.ToString().Substring(7), parser);
                     }
                     else
                     {
-                        FileLoader.Load(handler, u.AbsoluteUri.Substring(8), parser);
+                        FileLoader.Load(handler, u.ToString().Substring(8), parser);
                     }
                     return;
                 }
@@ -639,14 +639,14 @@ namespace VDS.RDF.Parsing
             catch (UriFormatException uriEx)
             {
                 // Uri Format Invalid
-                throw new RdfException("Unable to load from the given URI '" + u.AbsoluteUri + "' since it's format was invalid, see inner exception for details", uriEx);
+                throw new RdfException("Unable to load from the given URI '" + u.ToString() + "' since it's format was invalid, see inner exception for details", uriEx);
             }
             catch (WebException webEx)
             {
                 if (webEx.Response != null) Tools.HttpDebugResponse((HttpWebResponse)webEx.Response);
 
                 // Some sort of HTTP Error occurred
-                throw new WebException("A HTTP Error occurred resolving the URI '" + u.AbsoluteUri + "', see innner exception for details", webEx);
+                throw new WebException("A HTTP Error occurred resolving the URI '" + u.ToString() + "', see innner exception for details", webEx);
             }
         }
 

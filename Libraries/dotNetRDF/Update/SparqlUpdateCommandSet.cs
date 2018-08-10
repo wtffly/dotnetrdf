@@ -295,7 +295,7 @@ namespace VDS.RDF.Update
 
             if (_baseUri != null)
             {
-                output.AppendLine("BASE <" + _baseUri.AbsoluteUri.Replace(">", "\\>") + ">");
+                output.AppendLine("BASE <" + _baseUri.ToString().Replace(">", "\\>") + ">");
             }
 
             foreach (String prefix in _nsmap.Prefixes)
@@ -303,7 +303,7 @@ namespace VDS.RDF.Update
                 output.Append("PREFIX ");
                 output.Append(prefix);
                 output.Append(": <");
-                output.Append(_nsmap.GetNamespaceUri(prefix).AbsoluteUri.Replace(">", "\\>"));
+                output.Append(_nsmap.GetNamespaceUri(prefix).ToString().Replace(">", "\\>"));
                 output.AppendLine(">");
             }
 

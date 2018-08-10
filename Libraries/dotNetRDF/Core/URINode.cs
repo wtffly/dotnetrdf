@@ -259,7 +259,7 @@ namespace VDS.RDF
         /// <returns></returns>
         public override string ToString()
         {
-            return _uri.AbsoluteUri;
+            return _uri.ToString();
         }
 
         /// <summary>
@@ -405,7 +405,7 @@ namespace VDS.RDF
         /// <param name="context">Streaming Context</param>
         public sealed override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("uri", _uri.AbsoluteUri);
+            info.AddValue("uri", _uri.ToString());
         }
 
         #endregion
@@ -429,7 +429,7 @@ namespace VDS.RDF
         /// <param name="writer">XML Writer</param>
         public sealed override void WriteXml(XmlWriter writer)
         {
-            writer.WriteString(_uri.AbsoluteUri);
+            writer.WriteString(_uri.ToString());
         }
 
         #endregion
@@ -444,7 +444,7 @@ namespace VDS.RDF
         /// <returns></returns>
         public string AsString()
         {
-            return _uri.AbsoluteUri;
+            return _uri.ToString();
         }
 
         /// <summary>

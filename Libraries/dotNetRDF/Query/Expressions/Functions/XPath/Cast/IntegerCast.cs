@@ -76,7 +76,7 @@ namespace VDS.RDF.Query.Expressions.Functions.XPath.Cast
                     ILiteralNode lit = (ILiteralNode)n;
                     if (lit.DataType != null)
                     {
-                        string dt = lit.DataType.AbsoluteUri;
+                        string dt = lit.DataType.ToString();
                         if (SparqlSpecsHelper.IntegerDataTypes.Contains(dt))
                         {
                             // Already a integer type so valid as a xsd:integer

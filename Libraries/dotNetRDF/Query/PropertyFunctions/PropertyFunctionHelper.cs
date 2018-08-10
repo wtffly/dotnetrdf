@@ -154,7 +154,7 @@ namespace VDS.RDF.Query.PropertyFunctions
                         if (predItem == null) continue;
                         IUriNode predNode = predItem.Node as IUriNode;
                         if (predNode == null) continue;
-                        if (!argSeen && predNode.Uri.AbsoluteUri.Equals(RdfSpecsHelper.RdfListFirst))
+                        if (!argSeen && predNode.Uri.ToString().Equals(RdfSpecsHelper.RdfListFirst))
                         {
                             funcInfo[key].Patterns.Add(tp);
                             argList.Add(tp.Object);
@@ -162,7 +162,7 @@ namespace VDS.RDF.Query.PropertyFunctions
                             any = true;
                             argSeen = true;
                         }
-                        else if (argSeen && predNode.Uri.AbsoluteUri.Equals(RdfSpecsHelper.RdfListRest))
+                        else if (argSeen && predNode.Uri.ToString().Equals(RdfSpecsHelper.RdfListRest))
                         {
                             funcInfo[key].Patterns.Add(tp);
                             ps.Remove(tp);

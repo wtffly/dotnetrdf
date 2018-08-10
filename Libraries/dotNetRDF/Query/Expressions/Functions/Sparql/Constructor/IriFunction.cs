@@ -72,7 +72,7 @@ namespace VDS.RDF.Query.Expressions.Functions.Sparql.Constructor
                         }
                         else
                         {
-                            string dt = lit.DataType.AbsoluteUri;
+                            string dt = lit.DataType.ToString();
                             if (dt.Equals(XmlSpecsHelper.XmlSchemaDataTypeString, StringComparison.Ordinal))
                             {
                                 uri = Tools.ResolveUri(lit.Value, baseUri);
