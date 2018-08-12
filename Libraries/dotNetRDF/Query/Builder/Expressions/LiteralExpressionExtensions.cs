@@ -95,6 +95,11 @@ namespace VDS.RDF.Query.Builder.Expressions
             return new ConstantTerm(ToLiteral(value));
         }
 
+        internal static ConstantTerm ToConstantDateTerm(this DateTime value)
+        {
+            return new ConstantTerm(value.ToLiteralDate(NodeFactory));
+        }
+
         /// <summary>
         /// Creates an untyped literal term (simple literal)
         /// </summary>

@@ -98,6 +98,11 @@ namespace VDS.RDF.Query.Builder
             return new NumericExpression<DateTime>(value);
         }
 
+        public DateLiteralExpression ConstantDate(DateTime value)
+        {
+            return new DateLiteralExpression(value);
+        }
+
         public VariableExpression Variable(SparqlVariable variable)
         {
             return new VariableExpression(variable.Name);

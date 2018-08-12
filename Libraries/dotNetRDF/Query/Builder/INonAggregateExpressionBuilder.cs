@@ -614,6 +614,11 @@ namespace VDS.RDF.Query.Builder
         TypedLiteralExpression<DateTime> Constant(DateTime value);
 
         /// <summary>
+        /// Creates a date constant
+        /// </summary>
+        DateLiteralExpression ConstantDate(DateTime value);
+
+        /// <summary>
         /// Creates an IRI constant 
         /// </summary>
         RdfTermExpression Constant(Uri value);
