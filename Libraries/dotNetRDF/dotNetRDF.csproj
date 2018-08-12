@@ -4,7 +4,7 @@
     <Description>dotNetRDF is a RDF, SPARQL and Semantic Web API for .Net.  It provides simple but powerfully extensible APIs for this and integrates with a variety of popular triple stores.</Description>
     <Copyright>Copyright © dotNetRDF Project 2009-2017</Copyright>
     <AssemblyTitle>dotNetRDF</AssemblyTitle>
-    <VersionPrefix>3.0.0</VersionPrefix>
+    <VersionPrefix>3.1.0</VersionPrefix>
     <Authors>RobVesse;tpluscode;kal_ahmed;ronmichael;dotnetrdf</Authors>
     <TargetFrameworks>netstandard1.4;net40;net40-client;netstandard2.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
